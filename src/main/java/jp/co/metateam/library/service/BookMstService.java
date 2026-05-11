@@ -18,6 +18,7 @@ import jp.co.metateam.library.repository.BookMstRepository;
 @Service
 public class BookMstService {
 
+
     private final BookMstRepository bookMstRepository;
     
     @Autowired
@@ -39,10 +40,20 @@ public class BookMstService {
             bookMstDto.setTitle(book.getTitle());
             bookMstDtoList.add(bookMstDto);
         }
-
         return bookMstDtoList;
     }
-    
+
+
+
+     public void save(BookMstDto bookMstDto) {
+    BookMst book = new BookMst();
+ 
+    book.setIsbn(bookMstDto.getIsbn());
+    book.setTitle(bookMstDto.getTitle());
+ 
+    bookMstRepository.save(book);
+}
+
 }
 
 
